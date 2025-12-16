@@ -23,7 +23,7 @@ export default function Projects() {
     ];
 
     return (
-        <section id="projects" className="py-20 px-4 bg-black/30">
+        <section id="projects" className="py-20 px-4">
             <div className="max-w-6xl mx-auto">
                 <h2 className="text-3xl font-bold mb-12 text-center text-white">
                     My Projects
@@ -42,7 +42,7 @@ export default function Projects() {
                                     {project.tags.map((tag) => (
                                         <span
                                             key={tag}
-                                            className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded text-pink-600 bg-pink-200 uppercase last:mr-0 mr-1"
+                                            className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded text-orange-600 bg-orange-100 uppercase last:mr-0 mr-1"
                                         >
                                             {tag}
                                         </span>

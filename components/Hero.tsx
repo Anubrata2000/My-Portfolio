@@ -2,9 +2,9 @@ export default function Hero() {
     return (
         <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
             {/* Background blobs */}
-            <div className="absolute top-0 -left-4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob"></div>
-            <div className="absolute top-0 -right-4 w-72 h-72 bg-yellow-500 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-2000"></div>
-            <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-4000"></div>
+            <div className="absolute top-0 -left-4 w-72 h-72 bg-orange-600 rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-blob"></div>
+            <div className="absolute top-0 -right-4 w-72 h-72 bg-red-600 rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+            <div className="absolute -bottom-8 left-20 w-72 h-72 bg-yellow-600 rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
 
             <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
                 <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl lg:text-6xl text-white">
@@ -16,7 +16,7 @@ export default function Hero() {
                 <div className="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
                     <a
                         href="#projects"
-                        className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900 transition-all"
+                        className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-orange-600 hover:bg-orange-700 focus:ring-4 focus:ring-orange-900 transition-all shadow-[0_0_20px_rgba(234,88,12,0.5)]"
                     >
                         View Work
                         <svg
@@ -37,7 +37,7 @@ export default function Hero() {
                     </a>
                     <a
                         href="#contact"
-                        className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white border border-white rounded-lg hover:bg-white hover:text-black focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-800 transition-colors"
+                        className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white border border-white/20 rounded-lg hover:bg-white/10 focus:ring-4 focus:ring-gray-800 transition-colors"
                     >
                         Contact Me
                     </a>

@@ -17,7 +17,7 @@ export default function Navbar() {
             <li>
               <Link
                 href="#hero"
-                className="block py-2 px-3 text-white rounded-sm hover:text-purple-400 md:p-0 transition-colors"
+                className="block py-2 px-3 text-white rounded-sm hover:text-orange-500 md:p-0 transition-colors"
               >
                 Home
               </Link>
@@ -25,7 +25,7 @@ export default function Navbar() {
             <li>
               <Link
                 href="#about"
-                className="block py-2 px-3 text-white rounded-sm hover:text-purple-400 md:p-0 transition-colors"
+                className="block py-2 px-3 text-white rounded-sm hover:text-orange-500 md:p-0 transition-colors"
               >
                 About
               </Link>
@@ -33,7 +33,7 @@ export default function Navbar() {
             <li>
               <Link
                 href="#projects"
-                className="block py-2 px-3 text-white rounded-sm hover:text-purple-400 md:p-0 transition-colors"
+                className="block py-2 px-3 text-white rounded-sm hover:text-orange-500 md:p-0 transition-colors"
               >
                 Projects
               </Link>
@@ -41,7 +41,7 @@ export default function Navbar() {
             <li>
               <Link
                 href="#contact"
-                className="block py-2 px-3 text-white rounded-sm hover:text-purple-400 md:p-0 transition-colors"
+                className="block py-2 px-3 text-white rounded-sm hover:text-orange-500 md:p-0 transition-colors"
               >
                 Contact
               </Link>
