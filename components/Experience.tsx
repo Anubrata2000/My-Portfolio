@@ -1,123 +1,131 @@
 "use client";
-import { useState, useRef } from "react";
+import { useState } from "react";
+
 /*
-  Experience Component
-  - Horizontal Timeline style to match the user's reference.
-  - Interactive hover effects with Neon Red theme.
+  Experience Component - "Data Terminal" Design
+  - Innovative Master-Detail Layout
+  - "Neon Red" Theme
 */
 export default function Experience() {
     const experiences = [
         {
+            id: 1,
             year: "Aug 2024 - Present",
             role: "Associate Developer",
             company: "Appycodes",
             location: "Siliguri, West Bengal",
             description: "Building and maintaining robust softwares using Laravel. Contributing to new features, optimizing existing code, and ensuring scalability and security of applications.",
+            skills: ["Laravel", "PHP", "MySQL", "Scalability", "System Design"],
+            color: "border-red-500",
+            glow: "shadow-red-500/50"
         },
         {
+            id: 2,
             year: "Jan 2024 - Jul 2024",
             role: "Software Developer Intern",
             company: "Technowebs",
             location: "Siliguri, West Bengal",
             description: "Developed backend functionalities for e-commerce and MLM projects using Laravel. Handled database design, API integration, and third-party services. Maintained static websites and participated in Agile processes.",
+            skills: ["Laravel", "API Integration", "E-commerce", "Agile", "Backend"],
+            color: "border-blue-500",
+            glow: "shadow-blue-500/50"
         },
     ];
 
-    const scrollContainerRef = useRef<HTMLDivElement>(null);
-    const [isDragging, setIsDragging] = useState(false);
-    const [startX, setStartX] = useState(0);
-    const [scrollLeft, setScrollLeft] = useState(0);
-
-    const handleMouseDown = (e: React.MouseEvent) => {
-        if (!scrollContainerRef.current) return;
-        setIsDragging(true);
-        setStartX(e.pageX - scrollContainerRef.current.offsetLeft);
-        setScrollLeft(scrollContainerRef.current.scrollLeft);
-    };
-
-    const handleMouseLeave = () => {
-        setIsDragging(false);
-    };
-
-    const handleMouseUp = () => {
-        setIsDragging(false);
-    };
-
-    const handleMouseMove = (e: React.MouseEvent) => {
-        if (!isDragging || !scrollContainerRef.current) return;
-        e.preventDefault();
-        const x = e.pageX - scrollContainerRef.current.offsetLeft;
-        const walk = (x - startX) * 2; // Scroll-fast
-        scrollContainerRef.current.scrollLeft = scrollLeft - walk;
-    };
+    const [activeId, setActiveId] = useState(1);
 
     return (
-        <section id="experience" className="py-24 px-4 relative overflow-hidden">
-            {/* Ambient Background Glow */}
-            <div className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-[var(--accent)] rounded-full mix-blend-screen filter blur-[150px] opacity-5 pointer-events-none"></div>
+        <section id="experience" className="py-24 px-4 relative overflow-hidden bg-black/50 min-h-screen flex flex-col justify-center">
+            {/* Background Grid */}
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)]"></div>
 
-            <div className="max-w-6xl mx-auto relative z-10">
-                <div className="inline-block mb-4 text-[var(--accent)] font-bold tracking-widest uppercase text-sm">
-                    03. My Journey
+            <div className="max-w-7xl mx-auto w-full relative z-10">
+                <div className="mb-16 md:mb-24 text-center">
+                    <div className="inline-block mb-4 text-[var(--accent)] font-bold tracking-widest uppercase text-sm">
+                        02. My Journey
+                    </div>
+                    <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter">
+                        MY <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--accent)] to-rose-600">EVOLUTION</span>
+                    </h2>
                 </div>
-                <h2 className="text-4xl md:text-5xl font-bold mb-20 text-white">
-                    My <span className="text-[var(--accent)]">Experience</span>
-                </h2>
 
-                <div className="relative">
-                    {/* Horizontal Line (Desktop) - Adjusted width to span scrollable area if needed, but for now fixed to container */}
-                    <div className="hidden md:block absolute top-[45px] left-0 w-full h-[2px] bg-white/10"></div>
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
 
-                    {/* Scrollable Container */}
-                    <div
-                        ref={scrollContainerRef}
-                        onMouseDown={handleMouseDown}
-                        onMouseLeave={handleMouseLeave}
-                        onMouseUp={handleMouseUp}
-                        onMouseMove={handleMouseMove}
-                        className="flex gap-6 md:gap-12 overflow-x-auto pb-12 pt-8 snap-x snap-mandatory no-scrollbar cursor-grab active:cursor-grabbing"
-                    >
-                        {experiences.map((exp, index) => (
-                            <div key={index} className="relative group min-w-[75vw] sm:min-w-[350px] md:min-w-[400px] flex-shrink-0 snap-center select-none">
-                                {/* Timeline Dot (Desktop) */}
-                                <div className="hidden md:flex absolute -top-[6px] left-8 items-center justify-center">
-                                    <div className="w-8 h-8 rounded-full bg-black border-2 border-white/20 group-hover:border-[var(--accent)] z-20 transition-colors duration-300 flex items-center justify-center">
-                                        <div className="w-3 h-3 rounded-full bg-white/20 group-hover:bg-[var(--accent)] transition-colors duration-300"></div>
-                                    </div>
-                                </div>
-
-                                {/* Content Card */}
-                                <div className="glass-card p-8 rounded-2xl border border-white/5 relative mt-8 md:mt-12 group-hover:-translate-y-2 transition-transform duration-300 pointer-events-none md:pointer-events-auto">
-                                    <div className="inline-block px-3 py-1 mb-4 text-xs font-bold text-[var(--accent)] border border-[var(--accent)]/30 rounded-full bg-[var(--accent)]/10">
+                    {/* Left Column: Navigation (The "Terminal List") */}
+                    <div className="lg:col-span-5 flex flex-col gap-6">
+                        {experiences.map((exp) => (
+                            <button
+                                key={exp.id}
+                                onClick={() => setActiveId(exp.id)}
+                                className={`group relative p-6 rounded-xl border text-left transition-all duration-300 w-full hover:bg-white/5 
+                                    ${activeId === exp.id
+                                        ? `bg-white/5 border-[var(--accent)] shadow-[0_0_20px_rgba(245,10,14,0.2)]`
+                                        : "border-white/10 hover:border-white/30"
+                                    }`}
+                            >
+                                <div className="flex items-center justify-between mb-2">
+                                    <span className={`text-xs font-bold tracking-widest uppercase ${activeId === exp.id ? "text-[var(--accent)]" : "text-gray-500"}`}>
                                         {exp.year}
+                                    </span>
+                                    {activeId === exp.id && (
+                                        <span className="flex h-2 w-2 relative">
+                                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                                            <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--accent)]"></span>
+                                        </span>
+                                    )}
+                                </div>
+                                <h3 className={`text-xl md:text-2xl font-bold transition-colors ${activeId === exp.id ? "text-white" : "text-gray-400 group-hover:text-white"}`}>
+                                    {exp.role}
+                                </h3>
+                                <p className="text-sm text-gray-500 mt-1">{exp.company}</p>
+
+                                {/* Connecting Line (Desktop Only) */}
+                                {activeId === exp.id && (
+                                    <div className="hidden lg:block absolute -right-[42px] top-1/2 -translate-y-1/2 w-10 h-[2px] bg-[var(--accent)]">
+                                        <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 bg-[var(--accent)] rounded-full shadow-[0_0_10px_var(--accent)]"></div>
                                     </div>
-                                    <h3 className="text-xl font-bold text-white mb-1 group-hover:text-[var(--accent)] transition-colors">{exp.role}</h3>
-                                    <p className="text-sm font-semibold text-gray-400 mb-4">{exp.company} • {exp.location}</p>
-                                    <p className="text-gray-400 text-sm leading-relaxed border-t border-white/10 pt-4">
+                                )}
+                            </button>
+                        ))}
+                    </div>
+
+                    {/* Right Column: Detailed View (The "Hologram") */}
+                    <div className="lg:col-span-7 relative min-h-[400px]">
+                        {experiences.map((exp) => (
+                            <div
+                                key={exp.id}
+                                className={`absolute inset-0 transition-all duration-500 ease-in-out ${activeId === exp.id ? "opacity-100 translate-x-0 z-10 pointer-events-auto" : "opacity-0 translate-x-8 z-0 pointer-events-none"}`}
+                            >
+                                <div className="h-full bg-black/40 backdrop-blur-xl border border-white/10 p-8 md:p-12 rounded-2xl relative overflow-hidden group">
+                                    {/* Decorative Elements */}
+                                    <div className="absolute top-0 right-0 p-4 opacity-20">
+                                        <svg className="w-24 h-24 text-[var(--accent)]" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
+                                        </svg>
+                                    </div>
+
+                                    <h3 className="text-3xl font-bold text-white mb-2">{exp.company}</h3>
+                                    <div className="text-[var(--accent)] text-sm font-mono mb-8">{exp.location}</div>
+
+                                    <p className="text-gray-300 text-lg leading-relaxed mb-8 border-l-2 border-[var(--accent)] pl-6">
                                         {exp.description}
                                     </p>
 
-                                    {/* Decorative Icon */}
-                                    <div className="absolute top-6 right-6 text-gray-700/50">
-                                        <svg className="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
-                                            <path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z" />
-                                        </svg>
+                                    <div className="space-y-4">
+                                        <div className="text-xs font-bold text-gray-500 uppercase tracking-widest">Tech Stack</div>
+                                        <div className="flex flex-wrap gap-2">
+                                            {exp.skills.map((skill, idx) => (
+                                                <span key={idx} className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs md:text-sm text-gray-300 hover:border-[var(--accent)] hover:text-white transition-colors">
+                                                    #{skill}
+                                                </span>
+                                            ))}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         ))}
                     </div>
 
-                    {/* Scroll Hint */}
-                    <div className="mt-4 flex items-center justify-center gap-2 text-gray-500 text-sm animate-pulse">
-                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
-                        <span>Scroll to explore timeline</span>
-                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
-                    </div>
                 </div>
             </div>
         </section>

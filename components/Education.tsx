@@ -38,7 +38,7 @@ export default function Education() {
             <div className="max-w-5xl mx-auto relative z-10">
                 <div className="text-center mb-16">
                     <div className="inline-block mb-4 text-[var(--accent)] font-bold tracking-widest uppercase text-sm">
-                        04. Learning
+                        03. Learning
                     </div>
                     <h2 className="text-4xl md:text-5xl font-bold text-white">
                         My <span className="text-[var(--accent)]">Education</span>

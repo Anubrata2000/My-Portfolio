@@ -21,7 +21,7 @@ export async function POST(req: Request) {
         }
 
         const genAI = new GoogleGenerativeAI(apiKey);
-        const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+        const model = genAI.getGenerativeModel({ model: "gemini-flash-latest" });
 
         // SYSTEM CONTEXT: This tells the AI who it is and what information it has.
         const systemPrompt = `
@@ -31,36 +31,44 @@ export async function POST(req: Request) {
 
       --- CONTEXT ---
       Name: Anubrata Chatterjee
-      Role: Senior Frontend Engineer / Full Stack Developer
-      Location: San Francisco / Remote
+      Role: Associate Developer / Full Stack Developer
+      Location: Siliguri, West Bengal / Remote
       
       About:
-      - Full-stack developer passionate about sleek, performant, and beautiful web apps.
-      - Started with HTML/CSS, mastered Next.js, React, Node.js.
-      - Loves learning new tech and solving real-world problems.
-      - Open for inquiries: anubrata.c@example.com
-
+      - Dedicated to leveraging technical expertise and passion for innovation.
+      - Strong foundation in Laravel, Java, and Python.
+      - Strives to add value to innovative projects and continuously learn.
+      - Open for inquiries: chatterjeeanubrata386@gmail.com
+      
       Tech Stack:
-      - JavaScript (ES6+), TypeScript, React.js, Next.js, Node.js, Tailwind CSS, PostgreSQL, Git.
+      - Languages: Java, Python, PHP, SQL, JavaScript/TypeScript, HTML/CSS.
+      - Frameworks & Tools: Laravel, Next.js, React, Bootstrap, Tailwind CSS, MySQL, PostgreSQL, Git.
 
       Experience:
-      - 2023-Present: Senior Frontend Engineer at Tech Innovators Inc. (SF). Led frontend team, migrated to Next.js 14, improved performance by 40%.
-      - 2021-2023: Full Stack Developer at Creative Solutions Ltd. (NY). Built client e-commerce platforms using MERN stack.
-      - 2019-2021: Junior Web Developer at StartUp Hub (Remote). Implemented responsive UI.
+      - Aug 2024 - Present: Associate Developer at Appycodes (Siliguri, West Bengal). 
+        - Building and maintaining robust softwares using Laravel. 
+        - Contributing to new features, optimizing code, ensuring scalability and security.
+      - Jan 2024 - Jul 2024: Software Developer Intern at Technowebs (Siliguri, West Bengal).
+        - Developed backend functionalities for e-commerce and MLM projects using Laravel.
+        - Handled database design, API integration, and third-party services.
 
-      Projects:
+      Projects (Selected):
       1. E-Commerce Dashboard: Next.js, Tailwind, Prisma. Managed products/orders.
       2. Social Media App: React, Firebase, CSS. Real-time posts/likes.
       3. Task Management Tool: TypeScript, Redux, DnD. Productivity app.
+      4. Finance Tracker: Vue, D3.js. Visualizing personal finances.
+      5. AI Chat Interface: Svelte, OpenAI API. Clean UI for LLMs.
 
       Education:
-      - Bachelor of Science in CS, University of Tech (2015-2019).
-      - Full Stack Bootcamp, Code Academy (2020).
+      - Masters in Computer Application (MCA), Siliguri Institute of Technology (2022-2024). CGPA: 8.74.
+      - Bachelor of Science in Computer Science, Acharya Prafulla Chandra Roy Govt College (2019-2022). CGPA: 8.82.
+      - ICSE and ISC, Don Bosco School (2006-2019). Science & Maths.
 
       Contact:
-      - Email: anubrata.c@example.com
-      - Phone: +91 98765 43210
-      - LinkedIn/Twitter available.
+      - Email: chatterjeeanubrata386@gmail.com
+      - Phone: +91 94349 77524
+      - LinkedIn: https://linkedin.com/in/anubrata-chatterjee-9a588b246
+      - GitHub: https://github.com/Anubrata2000
       --- END CONTEXT ---
 
       If the user asks something not in this context (like "What is the capital of France?"), politely explain that you are only here to discuss Anubrata's professional work.

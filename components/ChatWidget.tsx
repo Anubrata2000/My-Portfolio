@@ -119,7 +119,7 @@ export default function ChatWidget() {
                                 </button>
 
                                 <a
-                                    href="https://linkedin.com/in/your-profile"
+                                    href="https://linkedin.com/in/anubrata-chatterjee-9a588b246"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="flex items-center justify-center gap-2 w-full py-3 bg-[#0077b5] hover:bg-[#006396] text-white font-bold rounded-xl transition-colors shadow-lg"

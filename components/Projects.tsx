@@ -66,7 +66,7 @@ export default function Projects() {
 
             <div className="max-w-6xl mx-auto relative z-10">
                 <div className="inline-block mb-4 text-[var(--accent)] font-bold tracking-widest uppercase text-sm">
-                    02. What I've Built
+                    04. What I've Built
                 </div>
                 <h2 className="text-4xl md:text-5xl font-bold mb-16 text-white">
                     Selected <span className="text-[var(--accent)]">Works</span>
