@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import CustomCursor from "@/components/CustomCursor";
+import ChatWidget from "@/components/ChatWidget";
 
 // Load the Inter font from Google Fonts with Latin support
 const inter = Inter({ subsets: ["latin"] });
@@ -20,6 +21,7 @@ export default function RootLayout({
     <html lang="en" className="dark scroll-smooth">
       <body className={inter.className}>
         <CustomCursor />
+        <ChatWidget />
         {children}
       </body>
     </html>

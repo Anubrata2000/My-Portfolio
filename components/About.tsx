@@ -27,7 +27,7 @@ export default function About() {
                     01. Who I Am
                 </div>
                 <h2 className="text-4xl md:text-5xl font-bold mb-12 text-white">
-                    About Me
+                    About <span className="text-[var(--accent)]">Me</span>
                 </h2>
 
                 <div className="glass-card p-10 rounded-2xl border border-white/5">

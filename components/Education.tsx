@@ -21,12 +21,15 @@ export default function Education() {
 
     return (
         <section id="education" className="py-24 px-4 relative overflow-hidden">
+            {/* Ambient Background Glow */}
+            <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[400px] h-[400px] bg-[var(--accent)] rounded-full mix-blend-screen filter blur-[120px] opacity-5 pointer-events-none"></div>
+
             <div className="max-w-4xl mx-auto relative z-10">
                 <div className="inline-block mb-4 text-[var(--accent)] font-bold tracking-widest uppercase text-sm">
                     04. Learning
                 </div>
                 <h2 className="text-4xl md:text-5xl font-bold mb-12 text-white">
-                    Education
+                    My <span className="text-[var(--accent)]">Education</span>
                 </h2>
 
                 <div className="space-y-6">

@@ -6,6 +6,9 @@ import Experience from "@/components/Experience";
 import Education from "@/components/Education";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import ChatWidget from "@/components/ChatWidget";
+
+import RevealOnScroll from "@/components/RevealOnScroll";
 
 /*
   This is the main Page component (Home).
@@ -21,14 +24,15 @@ export default function Home() {
       {/* This div stacks the content sections with no gap */}
       <div className="flex flex-col gap-0">
         <Hero />
-        <About />
-        <Experience />
-        <Education />
-        <Projects />
-        <Contact />
+        <RevealOnScroll><About /></RevealOnScroll>
+        <RevealOnScroll><Experience /></RevealOnScroll>
+        <RevealOnScroll><Education /></RevealOnScroll>
+        <RevealOnScroll><Projects /></RevealOnScroll>
+        <RevealOnScroll><Contact /></RevealOnScroll>
       </div>
 
       <Footer />
+      <ChatWidget />
     </main>
   );
 }

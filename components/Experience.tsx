@@ -1,3 +1,5 @@
+"use client";
+import { useState, useRef } from "react";
 /*
   Experience Component
   - Horizontal Timeline style to match the user's reference.
@@ -28,32 +30,71 @@ export default function Experience() {
         },
     ];
 
+    const scrollContainerRef = useRef<HTMLDivElement>(null);
+    const [isDragging, setIsDragging] = useState(false);
+    const [startX, setStartX] = useState(0);
+    const [scrollLeft, setScrollLeft] = useState(0);
+
+    const handleMouseDown = (e: React.MouseEvent) => {
+        if (!scrollContainerRef.current) return;
+        setIsDragging(true);
+        setStartX(e.pageX - scrollContainerRef.current.offsetLeft);
+        setScrollLeft(scrollContainerRef.current.scrollLeft);
+    };
+
+    const handleMouseLeave = () => {
+        setIsDragging(false);
+    };
+
+    const handleMouseUp = () => {
+        setIsDragging(false);
+    };
+
+    const handleMouseMove = (e: React.MouseEvent) => {
+        if (!isDragging || !scrollContainerRef.current) return;
+        e.preventDefault();
+        const x = e.pageX - scrollContainerRef.current.offsetLeft;
+        const walk = (x - startX) * 2; // Scroll-fast
+        scrollContainerRef.current.scrollLeft = scrollLeft - walk;
+    };
+
     return (
         <section id="experience" className="py-24 px-4 relative overflow-hidden">
+            {/* Ambient Background Glow */}
+            <div className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-[var(--accent)] rounded-full mix-blend-screen filter blur-[150px] opacity-5 pointer-events-none"></div>
+
             <div className="max-w-6xl mx-auto relative z-10">
                 <div className="inline-block mb-4 text-[var(--accent)] font-bold tracking-widest uppercase text-sm">
                     03. My Journey
                 </div>
                 <h2 className="text-4xl md:text-5xl font-bold mb-20 text-white">
-                    Experience
+                    My <span className="text-[var(--accent)]">Experience</span>
                 </h2>
 
                 <div className="relative">
-                    {/* Horizontal Line (Desktop) */}
-                    <div className="hidden md:block absolute top-[15px] left-0 w-full h-[2px] bg-white/10"></div>
+                    {/* Horizontal Line (Desktop) - Adjusted width to span scrollable area if needed, but for now fixed to container */}
+                    <div className="hidden md:block absolute top-[45px] left-0 w-full h-[2px] bg-white/10"></div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+                    {/* Scrollable Container */}
+                    <div
+                        ref={scrollContainerRef}
+                        onMouseDown={handleMouseDown}
+                        onMouseLeave={handleMouseLeave}
+                        onMouseUp={handleMouseUp}
+                        onMouseMove={handleMouseMove}
+                        className="flex gap-6 md:gap-12 overflow-x-auto pb-12 pt-8 snap-x snap-mandatory no-scrollbar cursor-grab active:cursor-grabbing"
+                    >
                         {experiences.map((exp, index) => (
-                            <div key={index} className="relative group">
+                            <div key={index} className="relative group min-w-[75vw] sm:min-w-[350px] md:min-w-[400px] flex-shrink-0 snap-center select-none">
                                 {/* Timeline Dot (Desktop) */}
-                                <div className="hidden md:flex absolute -top-[6px] left-1/2 -translate-x-1/2 items-center justify-center">
+                                <div className="hidden md:flex absolute -top-[6px] left-8 items-center justify-center">
                                     <div className="w-8 h-8 rounded-full bg-black border-2 border-white/20 group-hover:border-[var(--accent)] z-20 transition-colors duration-300 flex items-center justify-center">
                                         <div className="w-3 h-3 rounded-full bg-white/20 group-hover:bg-[var(--accent)] transition-colors duration-300"></div>
                                     </div>
                                 </div>
 
                                 {/* Content Card */}
-                                <div className="glass-card p-8 rounded-2xl border border-white/5 relative mt-8 md:mt-12 group-hover:-translate-y-2 transition-transform duration-300">
+                                <div className="glass-card p-8 rounded-2xl border border-white/5 relative mt-8 md:mt-12 group-hover:-translate-y-2 transition-transform duration-300 pointer-events-none md:pointer-events-auto">
                                     <div className="inline-block px-3 py-1 mb-4 text-xs font-bold text-[var(--accent)] border border-[var(--accent)]/30 rounded-full bg-[var(--accent)]/10">
                                         {exp.year}
                                     </div>
@@ -72,6 +113,17 @@ export default function Experience() {
                                 </div>
                             </div>
                         ))}
+                    </div>
+
+                    {/* Scroll Hint */}
+                    <div className="mt-4 flex items-center justify-center gap-2 text-gray-500 text-sm animate-pulse">
+                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                        <span>Scroll to explore timeline</span>
+                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
                     </div>
                 </div>
             </div>

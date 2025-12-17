@@ -1,68 +1,130 @@
 /*
-  Contact Component
-  - Cleaned up form inputs to match dark theme.
+  Contact Component (Snapshot Style)
+  - Layout matches the reference image: Left aligned title, Right aligned details.
+  - Form code is preserved (commented out) for future use.
 */
 export default function Contact() {
     return (
-        <section id="contact" className="py-24 px-4 relative overflow-hidden mb-20"> {/* Margin bottom for floating navbar */}
-
+        <section id="contact" className="py-24 px-4 relative overflow-hidden mb-20">
+            {/* Decorative Blur */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[var(--accent)] rounded-full mix-blend-screen filter blur-[150px] opacity-10 pointer-events-none"></div>
 
-            <div className="max-w-2xl mx-auto p-10 glass-card rounded-3xl relative z-10 border border-white/5">
-                <h2 className="text-4xl font-bold mb-6 text-center text-white">
-                    Let's Work Together
-                </h2>
-                <p className="mb-10 font-light text-center text-gray-400 text-lg">
-                    Have a project in mind? Looking for a partner to help build your product? Drop me a line.
-                </p>
+            <div className="max-w-6xl mx-auto relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 
-                <form action="#" className="space-y-6">
-                    <div>
-                        <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-400 uppercase tracking-wider">
-                            Your email
-                        </label>
-                        <input
-                            type="email"
-                            id="email"
-                            className="block w-full p-4 text-white bg-black/50 border border-white/10 rounded-xl focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent outline-none transition-all placeholder-gray-600"
-                            placeholder="name@example.com"
-                            required
-                        />
-                    </div>
+                {/* Left Side: Call to Action */}
+                <div>
+                    <h2 className="text-5xl md:text-7xl font-bold mb-6 text-white tracking-tighter">
+                        Let's have <br />
+                        <span className="text-[var(--accent)]">a Chat</span>
+                    </h2>
+                    <p className="text-xl text-gray-400 font-light max-w-md mb-8">
+                        Want to chat design, products, anything digital or just grab a smoothie? Hit me up!
+                    </p>
 
-                    <div>
-                        <label htmlFor="subject" className="block mb-2 text-sm font-medium text-gray-400 uppercase tracking-wider">
-                            Subject
-                        </label>
-                        <input
-                            type="text"
-                            id="subject"
-                            className="block w-full p-4 text-white bg-black/50 border border-white/10 rounded-xl focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent outline-none transition-all placeholder-gray-600"
-                            placeholder="Project Inquiry"
-                            required
-                        />
-                    </div>
-
-                    <div className="sm:col-span-2">
-                        <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-400 uppercase tracking-wider">
-                            Your message
-                        </label>
-                        <textarea
-                            id="message"
-                            rows={6}
-                            className="block w-full p-4 text-white bg-black/50 border border-white/10 rounded-xl focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent outline-none transition-all placeholder-gray-600"
-                            placeholder="Tell me about your project..."
-                        ></textarea>
-                    </div>
-
-                    <button
-                        type="submit"
-                        className="w-full py-4 px-8 text-base font-bold text-white rounded-xl bg-[var(--accent)] hover:bg-red-600 shadow-lg shadow-red-900/20 hover:shadow-red-900/40 transition-all transform hover:-translate-y-1"
+                    <a
+                        href="mailto:anubrata.c@example.com"
+                        className="inline-block bg-[var(--accent)] text-white font-bold px-8 py-4 rounded-full shadow-[0_0_20px_rgba(245,10,14,0.4)] hover:shadow-[0_0_40px_rgba(245,10,14,0.6)] hover:-translate-y-1 transition-all"
                     >
-                        Send Message
-                    </button>
-                </form>
+                        Let's Chat
+                    </a>
+                </div>
+
+                {/* Right Side: Contact Details */}
+                <div className="space-y-10 md:pl-20">
+
+                    {/* Email & Phone */}
+                    <div>
+                        <h3 className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-4">Get in Touch</h3>
+                        <div className="space-y-2">
+                            <a href="mailto:anubrata.c@example.com" className="block text-2xl md:text-3xl font-bold text-white hover:text-[var(--accent)] transition-colors">
+                                anubrata.c@example.com
+                            </a>
+                            <a href="tel:+919876543210" className="block text-xl md:text-2xl font-bold text-gray-300 hover:text-[var(--accent)] transition-colors">
+                                +91 98765 43210
+                            </a>
+                        </div>
+                    </div>
+
+                    {/* Socials */}
+                    <div>
+                        <h3 className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-4">Follow Me</h3>
+                        <div className="flex gap-4">
+                            <a href="#" className="w-12 h-12 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 hover:border-[var(--accent)] hover:bg-[var(--accent)] hover:text-white transition-all duration-300 group">
+                                <svg className="w-6 h-6 text-gray-400 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
+                            </a>
+                            <a href="#" className="w-12 h-12 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 hover:border-[var(--accent)] hover:bg-[var(--accent)] hover:text-white transition-all duration-300 group">
+                                <svg className="w-6 h-6 text-gray-400 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                                    <path fillRule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clipRule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
+
+            {/* 
+        PRESERVED FORM CODE (COMMENTED OUT)
+        -----------------------------------
+        <div className="max-w-2xl mx-auto p-10 glass-card rounded-3xl relative z-10 border border-white/5">
+        <h2 className="text-4xl font-bold mb-6 text-center text-white">
+          Let's Work Together
+        </h2>
+        <p className="mb-10 font-light text-center text-gray-400 text-lg">
+          Have a project in mind? Looking for a partner to help build your product? Drop me a line.
+        </p>
+        
+        <form action="#" className="space-y-6">
+          <div>
+            <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-400 uppercase tracking-wider">
+              Your email
+            </label>
+            <input
+              type="email"
+              id="email"
+              className="block w-full p-4 text-white bg-black/50 border border-white/10 rounded-xl focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent outline-none transition-all placeholder-gray-600"
+              placeholder="name@example.com"
+              required
+            />
+          </div>
+          
+          <div>
+            <label htmlFor="subject" className="block mb-2 text-sm font-medium text-gray-400 uppercase tracking-wider">
+              Subject
+            </label>
+            <input
+              type="text"
+              id="subject"
+              className="block w-full p-4 text-white bg-black/50 border border-white/10 rounded-xl focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent outline-none transition-all placeholder-gray-600"
+              placeholder="Project Inquiry"
+              required
+            />
+          </div>
+          
+          <div className="sm:col-span-2">
+            <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-400 uppercase tracking-wider">
+              Your message
+            </label>
+            <textarea
+              id="message"
+              rows={6}
+              className="block w-full p-4 text-white bg-black/50 border border-white/10 rounded-xl focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent outline-none transition-all placeholder-gray-600"
+              placeholder="Tell me about your project..."
+            ></textarea>
+          </div>
+          
+          <button
+            type="submit"
+            className="w-full py-4 px-8 text-base font-bold text-white rounded-xl bg-[var(--accent)] hover:bg-red-600 shadow-lg shadow-red-900/20 hover:shadow-red-900/40 transition-all transform hover:-translate-y-1"
+          >
+            Send Message
+          </button>
+        </form>
+      </div>
+      */}
+
         </section>
     );
 }
