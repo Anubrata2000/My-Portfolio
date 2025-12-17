@@ -19,9 +19,9 @@ export default function Hero() {
                 {/* Text Content */}
                 <div className="text-left w-full order-2 lg:order-1">
                     {/* Intro Tag */}
-                    <div className="inline-block mb-6 px-4 py-1 border border-[var(--accent)] rounded-full text-[var(--accent)] text-xs font-bold tracking-widest uppercase">
+                    {/* <div className="inline-block mb-6 px-4 py-1 border border-[var(--accent)] rounded-full text-[var(--accent)] text-xs font-bold tracking-widest uppercase">
                         Available for Hire
-                    </div>
+                    </div> */}
 
                     {/* Massive Headline */}
                     <h1 className="text-5xl md:text-8xl lg:text-9xl font-black tracking-tighter text-white mb-6 leading-[0.9]">
@@ -34,7 +34,7 @@ export default function Hero() {
 
                     {/* Description */}
                     <p className="text-xl md:text-2xl text-gray-400 max-w-2xl mb-12 font-light">
-                        Crafting digital experiences that merge <span className="text-white font-medium">engineering precision</span> with <span className="text-[var(--accent)] font-medium">design aesthetics</span>.
+                        Building <span className="text-white font-medium">robust, scalable backend systems</span> with clean, responsive <span className="text-[var(--accent)] font-medium">user interfaces</span>.
                     </p>
 
                     {/* Buttons */}
@@ -62,16 +62,20 @@ export default function Hero() {
                     {/* Decorative Elements behind image */}
                     <div className="absolute inset-0 bg-gradient-to-tr from-[var(--accent)]/20 to-transparent rounded-full blur-[80px] -z-10"></div>
 
-                    <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-full border-2 border-[var(--accent)]/30 overflow-hidden glass-card shadow-[0_0_40px_rgba(245,10,14,0.2)]">
+                    {/* Rotating Dashed Circle */}
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] border border-[var(--accent)]/20 rounded-full border-dashed animate-[spin_10s_linear_infinite] pointer-events-none"></div>
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] border border-white/5 rounded-full animate-[spin_15s_linear_infinite_reverse] pointer-events-none"></div>
+
+                    <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-full border-2 border-[var(--accent)]/30 overflow-hidden glass-card shadow-[0_0_40px_rgba(245,10,14,0.2)] group transition-transform duration-500 hover:scale-105 hover:-rotate-2 z-10" style={{ isolation: 'isolate', borderRadius: '9999px', maskImage: 'radial-gradient(white, black)' }}>
                         {/* 
                           PLACEHOLDER IMAGE 
                           Replace the 'src' below with your actual image path (e.g., "/profile.jpg")
                           Ensure your image is in the 'public' folder.
                         */}
                         <img
-                            src="https://via.placeholder.com/400x400/050505/f50a0e?text=Your+Photo"
-                            alt="Profile Picture"
-                            className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-500 scale-110 hover:scale-100"
+                            src="/profile.jpg"
+                            alt="Profile Avatar"
+                            className="w-full h-full object-cover transition-all duration-500 scale-100 group-hover:scale-110 brightness-80 contrast-150 saturate-110"
                         />
                     </div>
                 </div>

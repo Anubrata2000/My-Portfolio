@@ -5,10 +5,12 @@ import Image from "next/image";
 /*
   Projects Component
   - Displays selected projects in a grid.
-  - NOW INCLUDES: 3D Tilt & Glow effect on hover (Desktop).
-  - responsive: scales gracefully on mobile without breaking layout.
+  - Features 'Show More' toggle to handle large project lists.
+  - 3D Tilt & Glow effect on hover (Desktop).
 */
 export default function Projects() {
+    const [showAll, setShowAll] = useState(false);
+
     const projects = [
         {
             title: "E-Commerce Dashboard",
@@ -31,7 +33,31 @@ export default function Projects() {
             link: "#",
             image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
         },
+        // Extra projects for demonstration
+        {
+            title: "Finance Tracker",
+            description: "Visualizing personal finances with interactive charts and budget goals.",
+            tags: ["Vue", "D3.js", "Express"],
+            link: "#",
+            image: "https://images.unsplash.com/photo-1554224155-9844c6ef56d9?w=800&q=80"
+        },
+        {
+            title: "AI Chat Interface",
+            description: "A clean UI for interacting with LLMs, featuring streaming responses and code highlighting.",
+            tags: ["Svelte", "OpenAI API", "PrismJS"],
+            link: "#",
+            image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80"
+        },
+        {
+            title: "Portfolio v1",
+            description: "My previous portfolio site focused on minimalist typography and motion.",
+            tags: ["HTML", "SCSS", "GSAP"],
+            link: "#",
+            image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=800&q=80"
+        }
     ];
+
+    const visibleProjects = showAll ? projects : projects.slice(0, 3);
 
     return (
         <section id="projects" className="py-24 px-4 relative overflow-hidden">
@@ -47,9 +73,29 @@ export default function Projects() {
                 </h2>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {projects.map((project, index) => (
+                    {visibleProjects.map((project, index) => (
                         <ProjectCard key={index} project={project} index={index} />
                     ))}
+                </div>
+
+                {/* Show More / Less Button */}
+                <div className="mt-16 text-center">
+                    <button
+                        onClick={() => setShowAll(!showAll)}
+                        className="group relative inline-flex items-center gap-2 px-8 py-3 bg-zinc-900 text-white rounded-full font-bold border border-white/10 hover:border-[var(--accent)] hover:bg-[var(--accent)]/10 transition-all duration-300"
+                    >
+                        <span>{showAll ? "Show Less" : "View More Projects"}</span>
+                        <svg
+                            className={`w-4 h-4 transition-transform duration-300 ${showAll ? "rotate-180" : ""}`}
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                        >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+
+                    <p className="mt-4 text-gray-500 text-sm">
+                        Or visit my <a href="https://github.com/Anubrata2000" target="_blank" rel="noopener noreferrer" className="text-[var(--accent)] hover:underline">GitHub</a> to see everything.
+                    </p>
                 </div>
             </div>
         </section>

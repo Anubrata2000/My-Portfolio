@@ -8,25 +8,18 @@ import { useState, useRef } from "react";
 export default function Experience() {
     const experiences = [
         {
-            year: "2023 - Present",
-            role: "Senior Frontend Engineer",
-            company: "Tech Innovators Inc.",
-            location: "San Francisco",
-            description: "Leading the frontend team in migration to Next.js 14 and improving site performance by 40%.",
+            year: "Aug 2024 - Present",
+            role: "Associate Developer",
+            company: "Appycodes",
+            location: "Siliguri, West Bengal",
+            description: "Building and maintaining robust softwares using Laravel. Contributing to new features, optimizing existing code, and ensuring scalability and security of applications.",
         },
         {
-            year: "2021 - 2023",
-            role: "Full Stack Developer",
-            company: "Creative Solutions Ltd.",
-            location: "New York",
-            description: "Developed and maintained multiple client e-commerce platforms using the MERN stack.",
-        },
-        {
-            year: "2019 - 2021",
-            role: "Junior Web Developer",
-            company: "StartUp Hub",
-            location: "Remote",
-            description: "Collaborated with designers to implement responsive UI components and ensuring cross-browser compatibility.",
+            year: "Jan 2024 - Jul 2024",
+            role: "Software Developer Intern",
+            company: "Technowebs",
+            location: "Siliguri, West Bengal",
+            description: "Developed backend functionalities for e-commerce and MLM projects using Laravel. Handled database design, API integration, and third-party services. Maintained static websites and participated in Agile processes.",
         },
     ];
 

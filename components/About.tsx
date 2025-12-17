@@ -4,12 +4,14 @@
 */
 export default function About() {
     const skills = [
-        "JavaScript (ES6+)",
-        "TypeScript",
-        "React.js",
-        "Next.js",
-        "Node.js",
-        "Tailwind CSS",
+        "Java",
+        "Python",
+        "SQL",
+        "PHP",
+        "Laravel",
+        "HTML/CSS",
+        "Bootstrap",
+        "MySQL",
         "PostgreSQL",
         "Git",
     ];
@@ -32,10 +34,9 @@ export default function About() {
 
                 <div className="glass-card p-10 rounded-2xl border border-white/5">
                     <p className="text-xl text-gray-400 mb-8 leading-relaxed font-light">
-                        I am a full-stack developer with a passion for building beautiful and
-                        functional web applications. I started my journey exploring the basics of
-                        HTML & CSS and have since moved on to mastering modern frameworks like Next.js.
-                        I love to learn new technologies and apply them to solve real-world problems.
+                        I am dedicated to leveraging my technical expertise and passion for innovation to solve complex challenges in the software development field.
+                        With a strong foundation in <span className="text-white font-medium">Laravel, Java, and Python</span>, I strive to add value to innovative projects and continuously learn in a collaborative environment.
+                        My goal is to make meaningful contributions that drive both organizational success and individual growth.
                     </p>
 
                     <div className="border-t border-white/10 pt-8">
@@ -52,6 +53,43 @@ export default function About() {
                         </div>
                     </div>
                 </div>
+            </div>
+
+            {/* Resume Actions */}
+            <div className="mt-12 flex flex-col md:flex-row justify-center gap-6">
+                {/* View Button */}
+                <a
+                    href="/Resume.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative inline-flex items-center gap-3 px-8 py-4 bg-zinc-900 border border-white/10 rounded-2xl overflow-hidden hover:border-[var(--accent)] transition-all duration-500 hover:shadow-[0_0_30px_rgba(245,10,14,0.2)]"
+                >
+                    <div className="absolute inset-0 bg-[var(--accent)]/5 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500"></div>
+                    <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-white group-hover:text-[var(--accent)] transition-colors">
+                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                        </svg>
+                    </div>
+                    <span className="font-bold text-white group-hover:text-[var(--accent)] transition-colors">View CV</span>
+                </a>
+
+                {/* Download Button */}
+                <a
+                    href="/Resume.pdf"
+                    download="Anubrata_Chatterjee_Resume"
+                    className="group relative inline-flex items-center gap-3 px-8 py-4 bg-zinc-900 border border-white/10 rounded-2xl overflow-hidden hover:border-[var(--accent)] transition-all duration-500 hover:shadow-[0_0_30px_rgba(245,10,14,0.2)]"
+                >
+                    <div className="absolute inset-0 bg-[var(--accent)]/5 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500"></div>
+                    <div className="w-10 h-10 rounded-xl bg-[var(--accent)]/10 flex items-center justify-center text-[var(--accent)] group-hover:scale-110 transition-transform">
+                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                        </svg>
+                    </div>
+                    <div className="text-left">
+                        <div className="text-white font-bold group-hover:text-[var(--accent)] transition-colors">Download</div>
+                    </div>
+                </a>
             </div>
         </section>
     );

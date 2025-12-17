@@ -8,8 +8,8 @@ import ChatWidget from "@/components/ChatWidget";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Anubrata Chatterjee | Portfolio",
-  description: "A sleek portfolio built with Next.js and Tailwind CSS",
+  title: "Anubrata Chatterjee | Software Developer",
+  description: "Portfolio of Anubrata Chatterjee, a Software Developer specializing in robust backend systems, scalable architecture, and modern web applications using Laravel, Java, and Next.js.",
 };
 
 export default function RootLayout({
