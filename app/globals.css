@@ -2,70 +2,103 @@
 
 /* 
   :root defines global CSS variables.
-  These can be used anywhere in the app with var(--variable-name).
+  Updated for Trushank Style: Deep Black + Neon Red.
 */
 :root {
-  --background: #0a0a0a;
-  --foreground: #ededed;
+  --background: #050505;
+  /* Deepest black */
+  --foreground: #ffffff;
+  --accent: #f50a0e;
+  /* Brighter Neon Red */
 }
 
 /* 
-  Global styles for the body.
-  - min-height: 100vh ensures the background covers the full screen even if content is short.
-  - overflow-x: hidden prevents horizontal scrolling issues.
+  Global Body with Grid Background
+  - Replaces the old gradient with a subtle engineering-style grid.
+  - Hides the default cursor to use our custom one.
 */
 body {
   color: var(--foreground);
-  background: linear-gradient(to bottom right, #000000, #1c0500, #2a0a00);
+  background-color: var(--background);
+  /* Subtle grid pattern */
+  background-image:
+    radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 30px 30px;
+
   min-height: 100vh;
   font-family: Arial, Helvetica, sans-serif;
   overflow-x: hidden;
+  cursor: none;
+  /* Hide default cursor */
+}
+
+/* 
+  Custom Scrollbar 
+  - Makes the scrollbar match the dark theme.
+*/
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
 }
 
 /* 
   Glassmorphism Utilities 
-  These classes create the "frosted glass" effect by using semi-transparent backgrounds
-  and backdrop-filter: blur().
+  - Cleaner, flatter, better borders.
 */
 .glass {
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  /* Safari support */
-  border-bottom: 1px solid rgba(255, 69, 0, 0.1);
+  background: rgba(10, 10, 10, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .glass-card {
-  background: rgba(20, 10, 5, 0.4);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 100, 0, 0.1);
-  transition: all 0.3s ease;
-  /* Smooth hover animation */
+  background: rgba(20, 20, 20, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Hover effects for glass cards directly in CSS */
+/* Hover effects: Neon Red Glow */
 .glass-card:hover {
-  background: rgba(30, 15, 5, 0.6);
-  border-color: rgba(255, 100, 0, 0.3);
+  border-color: rgba(255, 0, 60, 0.5);
+  /* Neon Red Border */
   transform: translateY(-5px);
-  /* Moves the card up slightly */
-  box-shadow: 0 0 20px rgba(255, 69, 0, 0.1);
+  box-shadow: 0 0 30px rgba(255, 0, 60, 0.15);
+  /* Red Ambient Glow */
 }
 
 /* 
   Gradient Text Utility
-  - background-clip: text masks the background gradient to the shape of the text.
-  - color: transparent makes the text fill invisible so the background shows through.
+  - Updated to Neon Red gradient.
 */
 .text-gradient {
-  background: linear-gradient(to right, #f97316, #ef4444, #fbbf24);
+  background: linear-gradient(to right, #f50a0e, #ff4f53);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
-/* Enables smooth scrolling for anchor links (e.g., clicking 'About' scrolls down) */
+/* Smooth Scroll */
 html {
   scroll-behavior: smooth;
+}
+
+/* Global Selection Color */
+::selection {
+  background-color: var(--accent);
+  color: white;
 }

@@ -1,16 +1,13 @@
-import Image from "next/image";
-
 /*
   Projects Component
-  - Displays a grid of project cards.
-  - Shows how to handle more complex data structures (array of objects).
+  - Updated grid layout.
+  - Image placeholders now have a darker, sleeker look.
 */
 export default function Projects() {
-    // Project data: typically this would come from a database or API, but here it's static.
     const projects = [
         {
             title: "E-Commerce Dashboard",
-            description: "A comprehensive dashboard for managing products, orders, and customers using Next.js and Tailwind.",
+            description: "A comprehensive dashboard for managing products, orders, and customers.",
             tags: ["Next.js", "Tailwind", "Prisma"],
             link: "#",
         },
@@ -29,43 +26,52 @@ export default function Projects() {
     ];
 
     return (
-        <section id="projects" className="py-20 px-4">
-            <div className="max-w-6xl mx-auto">
-                <h2 className="text-3xl font-bold mb-12 text-center text-white">
-                    My Projects
+        <section id="projects" className="py-24 px-4 relative overflow-hidden">
+            <div className="max-w-6xl mx-auto relative z-10">
+                <div className="inline-block mb-4 text-[var(--accent)] font-bold tracking-widest uppercase text-sm">
+                    02. What I've Built
+                </div>
+                <h2 className="text-4xl md:text-5xl font-bold mb-16 text-white">
+                    Selected Works
                 </h2>
-                {/* Responsive Grid: 1 column on mobile, 2 on medium screens, 3 on large */}
+
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {projects.map((project, index) => (
-                        <div key={index} className="glass-card rounded-lg overflow-hidden flex flex-col h-full">
-                            {/* Project Thumbnail Placeholder */}
-                            <div className="h-48 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
-                                <span className="text-gray-500">Project Image</span>
+                        <div key={index} className="group glass-card rounded-2xl overflow-hidden flex flex-col h-full bg-zinc-900/40 border border-white/5 hover:border-[var(--accent)]/50 transition-all duration-300">
+                            {/* Project Visual */}
+                            <div className="h-56 bg-zinc-900 relative overflow-hidden group-hover:opacity-90 transition-opacity">
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
+                                <div className="flex items-center justify-center h-full text-zinc-700 font-bold text-4xl select-none group-hover:scale-110 transition-transform duration-500">
+                                    {index + 1}
+                                </div>
                             </div>
 
-                            {/* Content Container */}
-                            <div className="p-6 flex flex-col flex-grow">
-                                <h3 className="text-xl font-bold mb-2 text-white">{project.title}</h3>
-                                <p className="text-gray-400 mb-4 flex-grow">{project.description}</p>
+                            {/* Content */}
+                            <div className="p-8 flex flex-col flex-grow">
+                                <h3 className="text-2xl font-bold mb-3 text-white group-hover:text-[var(--accent)] transition-colors">{project.title}</h3>
+                                <p className="text-gray-400 mb-6 flex-grow leading-relaxed font-light">{project.description}</p>
 
-                                {/* Project Tags */}
-                                <div className="flex flex-wrap gap-2 mb-4">
+                                {/* Tags */}
+                                <div className="flex flex-wrap gap-2 mb-8">
                                     {project.tags.map((tag) => (
                                         <span
                                             key={tag}
-                                            className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded text-orange-600 bg-orange-100 uppercase last:mr-0 mr-1"
+                                            className="text-xs font-semibold px-2 py-1 uppercase text-gray-500 border border-white/10 rounded"
                                         >
                                             {tag}
                                         </span>
                                     ))}
                                 </div>
 
-                                {/* View Button */}
+                                {/* View Link */}
                                 <a
                                     href={project.link}
-                                    className="text-center bg-transparent hover:bg-white text-white font-semibold hover:text-black py-2 px-4 border border-white hover:border-transparent rounded"
+                                    className="inline-flex items-center text-[var(--accent)] font-bold hover:underline underline-offset-4"
                                 >
-                                    View Details
+                                    View Project
+                                    <svg className="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                    </svg>
                                 </a>
                             </div>
                         </div>

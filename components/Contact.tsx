@@ -1,79 +1,65 @@
 /*
   Contact Component
-  - A form for users to send messages.
-  - Note: This is currently just the UI (frontend). 
-  - To make it functional, we would need to connect it to an API route or service (like Formspree) in the 'action'.
+  - Cleaned up form inputs to match dark theme.
 */
 export default function Contact() {
     return (
-        <section id="contact" className="py-20 px-4">
-            <div className="max-w-screen-md mx-auto p-8 glass-card rounded-xl">
-                <h2 className="text-3xl font-bold mb-6 text-center text-white">
-                    Get In Touch
+        <section id="contact" className="py-24 px-4 relative overflow-hidden mb-20"> {/* Margin bottom for floating navbar */}
+
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[var(--accent)] rounded-full mix-blend-screen filter blur-[150px] opacity-10 pointer-events-none"></div>
+
+            <div className="max-w-2xl mx-auto p-10 glass-card rounded-3xl relative z-10 border border-white/5">
+                <h2 className="text-4xl font-bold mb-6 text-center text-white">
+                    Let's Work Together
                 </h2>
-                <p className="mb-8 lg:mb-16 font-light text-center text-gray-400 sm:text-xl">
-                    Got a technical issue? Want to send feedback about a beta feature? Need
-                    details about our Business plan? Let us know.
+                <p className="mb-10 font-light text-center text-gray-400 text-lg">
+                    Have a project in mind? Looking for a partner to help build your product? Drop me a line.
                 </p>
 
-                {/* HTML Form */}
-                <form action="#" className="space-y-8">
-                    {/* Email Input */}
+                <form action="#" className="space-y-6">
                     <div>
-                        <label
-                            htmlFor="email"
-                            className="block mb-2 text-sm font-medium text-gray-300"
-                        >
+                        <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-400 uppercase tracking-wider">
                             Your email
                         </label>
                         <input
                             type="email"
                             id="email"
-                            className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 shadow-sm-light"
-                            placeholder="name@flowbite.com"
+                            className="block w-full p-4 text-white bg-black/50 border border-white/10 rounded-xl focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent outline-none transition-all placeholder-gray-600"
+                            placeholder="name@example.com"
                             required
                         />
                     </div>
 
-                    {/* Subject Input */}
                     <div>
-                        <label
-                            htmlFor="subject"
-                            className="block mb-2 text-sm font-medium text-gray-300"
-                        >
+                        <label htmlFor="subject" className="block mb-2 text-sm font-medium text-gray-400 uppercase tracking-wider">
                             Subject
                         </label>
                         <input
                             type="text"
                             id="subject"
-                            className="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 shadow-sm-light"
-                            placeholder="Let us know how we can help you"
+                            className="block w-full p-4 text-white bg-black/50 border border-white/10 rounded-xl focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent outline-none transition-all placeholder-gray-600"
+                            placeholder="Project Inquiry"
                             required
                         />
                     </div>
 
-                    {/* Message Textarea */}
                     <div className="sm:col-span-2">
-                        <label
-                            htmlFor="message"
-                            className="block mb-2 text-sm font-medium text-gray-300"
-                        >
+                        <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-400 uppercase tracking-wider">
                             Your message
                         </label>
                         <textarea
                             id="message"
                             rows={6}
-                            className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Leave a comment..."
+                            className="block w-full p-4 text-white bg-black/50 border border-white/10 rounded-xl focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent outline-none transition-all placeholder-gray-600"
+                            placeholder="Tell me about your project..."
                         ></textarea>
                     </div>
 
-                    {/* Submit Button */}
                     <button
                         type="submit"
-                        className="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-orange-700 sm:w-fit hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-orange-300 dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800"
+                        className="w-full py-4 px-8 text-base font-bold text-white rounded-xl bg-[var(--accent)] hover:bg-red-600 shadow-lg shadow-red-900/20 hover:shadow-red-900/40 transition-all transform hover:-translate-y-1"
                     >
-                        Send message
+                        Send Message
                     </button>
                 </form>
             </div>

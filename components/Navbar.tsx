@@ -1,61 +1,62 @@
 import Link from "next/link";
-
 /*
-  Navbar Component
-  - This is a 'sticky' navigation bar that stays at the top of the screen.
-  - It uses the 'Link' component from Next.js for client-side navigation (no page reload).
+  Navbar Component (Trushank Style)
+  - Floating pill at the bottom of the screen.
+  - Glassmorphic look with Neon Red hover effects.
 */
 export default function Navbar() {
   return (
-    // 'fixed' keeps it pinned to top. 'glass' applies our custom frosted glass effect.
-    <nav className="fixed w-full z-50 top-0 start-0 glass border-b border-gray-200 dark:border-gray-600">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        {/* Logo / Brand Name */}
-        <Link
-          href="/"
-          className="flex items-center space-x-3 rtl:space-x-reverse"
-        >
-          <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">
-            Portfolio
-          </span>
+    // Fixed at bottom, centered horizontally
+    <nav className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
+      <div className="glass px-6 py-3 rounded-full flex items-center justify-between gap-8 shadow-2xl bg-black/80 border border-white/10">
+
+        {/* We can use icons here later, for now we keep text distinct and minimal */}
+        <Link href="/" className="text-white hover:text-[var(--accent)] transition-colors font-bold text-lg">
+          AC
         </Link>
-        <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
-          <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
-            {/* Navigation Links using standard <li> elements */}
-            <li>
-              <Link
-                href="#hero"
-                className="block py-2 px-3 text-white rounded-sm hover:text-orange-500 md:p-0 transition-colors"
-              >
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="#about"
-                className="block py-2 px-3 text-white rounded-sm hover:text-orange-500 md:p-0 transition-colors"
-              >
-                About
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="#projects"
-                className="block py-2 px-3 text-white rounded-sm hover:text-orange-500 md:p-0 transition-colors"
-              >
-                Projects
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="#contact"
-                className="block py-2 px-3 text-white rounded-sm hover:text-orange-500 md:p-0 transition-colors"
-              >
-                Contact
-              </Link>
-            </li>
-          </ul>
-        </div>
+
+        <ul className="flex items-center gap-6">
+          <li>
+            <Link
+              href="#hero"
+              className="text-sm font-medium text-gray-400 hover:text-white transition-colors hover:bg-[var(--accent)]/10 px-3 py-1.5 rounded-full"
+            >
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="#about"
+              className="text-sm font-medium text-gray-400 hover:text-white transition-colors hover:bg-[var(--accent)]/10 px-3 py-1.5 rounded-full"
+            >
+              About
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="#experience"
+              className="text-sm font-medium text-gray-400 hover:text-white transition-colors hover:bg-[var(--accent)]/10 px-3 py-1.5 rounded-full hidden sm:block"
+            >
+              Exp.
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="#projects"
+              className="text-sm font-medium text-gray-400 hover:text-white transition-colors hover:bg-[var(--accent)]/10 px-3 py-1.5 rounded-full"
+            >
+              Projects
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="#contact"
+              className="px-4 py-1.5 text-sm font-medium bg-[var(--accent)] text-white rounded-full hover:bg-red-600 transition-colors shadow-[0_0_10px_rgba(245,10,14,0.4)]"
+            >
+              Contact
+            </Link>
+          </li>
+        </ul>
       </div>
     </nav>
   );
