@@ -1,3 +1,8 @@
+/*
+  About Component
+  - This section gives a brief bio and lists technical skills.
+  - It demonstrates mapping through an array of data (skills) to render elements dynamically.
+*/
 export default function About() {
     const skills = [
         "JavaScript (ES6+)",
@@ -16,6 +21,7 @@ export default function About() {
                 <h2 className="text-3xl font-bold mb-8 text-center text-white">
                     About Me
                 </h2>
+                {/* We reuse the 'glass-card' utility class from global.css */}
                 <div className="glass-card p-8 rounded-lg shadow-lg">
                     <p className="text-lg text-gray-300 mb-6 leading-relaxed">
                         I am a full-stack developer with a passion for building beautiful and
@@ -25,10 +31,12 @@ export default function About() {
                     </p>
                     <div className="mt-8">
                         <h3 className="text-xl font-semibold mb-4 text-white">My Skills</h3>
+                        {/* Flex container to wrap skills nicely on smaller screens */}
                         <div className="flex flex-wrap gap-2">
+                            {/* .map() creates a loop to render a span for every skill in our list */}
                             {skills.map((skill) => (
                                 <span
-                                    key={skill}
+                                    key={skill} // React needs a unique key for each item in a list
                                     className="bg-orange-900/50 text-orange-200 text-sm font-medium px-3 py-1 rounded-full border border-orange-700/50"
                                 >
                                     {skill}

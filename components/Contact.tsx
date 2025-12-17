@@ -1,3 +1,9 @@
+/*
+  Contact Component
+  - A form for users to send messages.
+  - Note: This is currently just the UI (frontend). 
+  - To make it functional, we would need to connect it to an API route or service (like Formspree) in the 'action'.
+*/
 export default function Contact() {
     return (
         <section id="contact" className="py-20 px-4">
@@ -9,7 +15,10 @@ export default function Contact() {
                     Got a technical issue? Want to send feedback about a beta feature? Need
                     details about our Business plan? Let us know.
                 </p>
+
+                {/* HTML Form */}
                 <form action="#" className="space-y-8">
+                    {/* Email Input */}
                     <div>
                         <label
                             htmlFor="email"
@@ -25,6 +34,8 @@ export default function Contact() {
                             required
                         />
                     </div>
+
+                    {/* Subject Input */}
                     <div>
                         <label
                             htmlFor="subject"
@@ -40,6 +51,8 @@ export default function Contact() {
                             required
                         />
                     </div>
+
+                    {/* Message Textarea */}
                     <div className="sm:col-span-2">
                         <label
                             htmlFor="message"
@@ -54,6 +67,8 @@ export default function Contact() {
                             placeholder="Leave a comment..."
                         ></textarea>
                     </div>
+
+                    {/* Submit Button */}
                     <button
                         type="submit"
                         className="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-orange-700 sm:w-fit hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-orange-300 dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800"

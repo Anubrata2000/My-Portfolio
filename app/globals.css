@@ -1,10 +1,19 @@
 @import "tailwindcss";
 
+/* 
+  :root defines global CSS variables.
+  These can be used anywhere in the app with var(--variable-name).
+*/
 :root {
   --background: #0a0a0a;
   --foreground: #ededed;
 }
 
+/* 
+  Global styles for the body.
+  - min-height: 100vh ensures the background covers the full screen even if content is short.
+  - overflow-x: hidden prevents horizontal scrolling issues.
+*/
 body {
   color: var(--foreground);
   background: linear-gradient(to bottom right, #000000, #1c0500, #2a0a00);
@@ -13,11 +22,16 @@ body {
   overflow-x: hidden;
 }
 
-/* Glassmorphism Utilities */
+/* 
+  Glassmorphism Utilities 
+  These classes create the "frosted glass" effect by using semi-transparent backgrounds
+  and backdrop-filter: blur().
+*/
 .glass {
   background: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  /* Safari support */
   border-bottom: 1px solid rgba(255, 69, 0, 0.1);
 }
 
@@ -27,16 +41,23 @@ body {
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 100, 0, 0.1);
   transition: all 0.3s ease;
+  /* Smooth hover animation */
 }
 
+/* Hover effects for glass cards directly in CSS */
 .glass-card:hover {
   background: rgba(30, 15, 5, 0.6);
   border-color: rgba(255, 100, 0, 0.3);
   transform: translateY(-5px);
+  /* Moves the card up slightly */
   box-shadow: 0 0 20px rgba(255, 69, 0, 0.1);
 }
 
-/* Gradient Text */
+/* 
+  Gradient Text Utility
+  - background-clip: text masks the background gradient to the shape of the text.
+  - color: transparent makes the text fill invisible so the background shows through.
+*/
 .text-gradient {
   background: linear-gradient(to right, #f97316, #ef4444, #fbbf24);
   -webkit-background-clip: text;
@@ -44,7 +65,7 @@ body {
   color: transparent;
 }
 
-/* Smooth Scroll */
+/* Enables smooth scrolling for anchor links (e.g., clicking 'About' scrolls down) */
 html {
   scroll-behavior: smooth;
 }

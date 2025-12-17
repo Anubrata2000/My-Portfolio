@@ -1,6 +1,12 @@
 import Image from "next/image";
 
+/*
+  Projects Component
+  - Displays a grid of project cards.
+  - Shows how to handle more complex data structures (array of objects).
+*/
 export default function Projects() {
+    // Project data: typically this would come from a database or API, but here it's static.
     const projects = [
         {
             title: "E-Commerce Dashboard",
@@ -28,16 +34,21 @@ export default function Projects() {
                 <h2 className="text-3xl font-bold mb-12 text-center text-white">
                     My Projects
                 </h2>
+                {/* Responsive Grid: 1 column on mobile, 2 on medium screens, 3 on large */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {projects.map((project, index) => (
                         <div key={index} className="glass-card rounded-lg overflow-hidden flex flex-col h-full">
+                            {/* Project Thumbnail Placeholder */}
                             <div className="h-48 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
-                                {/* Placeholder for project image */}
                                 <span className="text-gray-500">Project Image</span>
                             </div>
+
+                            {/* Content Container */}
                             <div className="p-6 flex flex-col flex-grow">
                                 <h3 className="text-xl font-bold mb-2 text-white">{project.title}</h3>
                                 <p className="text-gray-400 mb-4 flex-grow">{project.description}</p>
+
+                                {/* Project Tags */}
                                 <div className="flex flex-wrap gap-2 mb-4">
                                     {project.tags.map((tag) => (
                                         <span
@@ -48,6 +59,8 @@ export default function Projects() {
                                         </span>
                                     ))}
                                 </div>
+
+                                {/* View Button */}
                                 <a
                                     href={project.link}
                                     className="text-center bg-transparent hover:bg-white text-white font-semibold hover:text-black py-2 px-4 border border-white hover:border-transparent rounded"
