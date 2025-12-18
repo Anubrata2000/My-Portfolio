@@ -35,7 +35,7 @@ export default function CustomCursor() {
         - Scales up when hovering over links.
       */}
             <div
-                className="fixed top-0 left-0 w-8 h-8 border border-white rounded-full pointer-events-none z-[9999] transition-transform duration-100 ease-out mix-blend-difference"
+                className="hidden md:block fixed top-0 left-0 w-8 h-8 border border-white rounded-full pointer-events-none z-[9999] transition-transform duration-100 ease-out mix-blend-difference"
                 style={{
                     transform: `translate(${position.x - 16}px, ${position.y - 16}px) scale(${isPointer ? 1.5 : 1})`,
                 }}
@@ -47,7 +47,7 @@ export default function CustomCursor() {
         - Changes color to Neon Red.
       */}
             <div
-                className="fixed top-0 left-0 w-2 h-2 bg-[var(--accent)] rounded-full pointer-events-none z-[9999]"
+                className="hidden md:block fixed top-0 left-0 w-2 h-2 bg-[var(--accent)] rounded-full pointer-events-none z-[9999]"
                 style={{
                     transform: `translate(${position.x - 4}px, ${position.y - 4}px)`,
                 }}
