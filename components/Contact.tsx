@@ -1,9 +1,54 @@
+"use client";
+import { useState, useEffect, FormEvent } from 'react';
+
 /*
   Contact Component (Snapshot Style)
   - Layout matches the reference image: Left aligned title, Right aligned details.
   - Form code is preserved (commented out) for future use.
 */
 export default function Contact() {
+  const [showForm, setShowForm] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [showToast, setShowToast] = useState(false);
+
+  useEffect(() => {
+    if (showToast) {
+      const timer = setTimeout(() => {
+        setShowToast(false);
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [showToast]);
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+
+    const form = e.currentTarget;
+    const formData = {
+      name: (form.elements.namedItem('name') as HTMLInputElement).value,
+      email: (form.elements.namedItem('email') as HTMLInputElement).value,
+      subject: (form.elements.namedItem('subject') as HTMLInputElement).value,
+      message: (form.elements.namedItem('message') as HTMLTextAreaElement).value,
+    };
+
+    try {
+      await fetch("https://script.google.com/macros/s/AKfycbygyieDL_WZ75dyvHVIIXPJMgqQVRxrkIaWwQfpXGYjHvPKdpddovkbEyzkKmVj1X-_Zg/exec", {
+        method: "POST",
+        body: JSON.stringify(formData),
+      });
+
+      setShowForm(false);
+      setShowToast(true);
+      form.reset();
+    } catch (error) {
+      console.error(error);
+      alert("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <section id="contact" className="py-24 px-4 relative overflow-hidden mb-20">
       {/* Decorative Blur */}
@@ -27,6 +72,12 @@ export default function Contact() {
           >
             Let's Chat
           </a>
+
+          <div className="mt-4">
+            <p className="text-gray-400 text-sm">
+              Prefer a form? <button onClick={() => setShowForm(true)} className="text-[var(--accent)] hover:underline font-medium">Write a message</button>
+            </p>
+          </div>
         </div>
 
         {/* Right Side: Contact Details */}
@@ -78,65 +129,143 @@ export default function Contact() {
 
       </div>
 
-      {/* 
-        PRESERVED FORM CODE (COMMENTED OUT)
-        -----------------------------------
-        <div className="max-w-2xl mx-auto p-10 glass-card rounded-3xl relative z-10 border border-white/5">
-        <h2 className="text-4xl font-bold mb-6 text-center text-white">
-          Let's Work Together
-        </h2>
-        <p className="mb-10 font-light text-center text-gray-400 text-lg">
-          Have a project in mind? Looking for a partner to help build your product? Drop me a line.
-        </p>
-        
-        <form action="#" className="space-y-6">
-          <div>
-            <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-400 uppercase tracking-wider">
-              Your email
-            </label>
-            <input
-              type="email"
-              id="email"
-              className="block w-full p-4 text-white bg-black/50 border border-white/10 rounded-xl focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent outline-none transition-all placeholder-gray-600"
-              placeholder="name@example.com"
-              required
-            />
+      {/* MODAL FORM */}
+      {showForm && (
+        <div className="fixed inset-0 z-[100] overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+          {/* Backdrop */}
+          <div className="fixed inset-0 bg-black/60 backdrop-blur-md transition-opacity" onClick={() => setShowForm(false)}></div>
+
+          <div className="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
+            <div
+              className="relative transform overflow-hidden rounded-3xl bg-[var(--glass-bg)] backdrop-blur-xl border border-[var(--glass-border)] text-left shadow-[0_8px_32px_0_rgba(245,10,14,0.15)] transition-all sm:my-8 sm:w-full sm:max-w-xl animate-[modalEnter_0.4s_cubic-bezier(0.16,1,0.3,1)_forwards]"
+              onClick={(e) => e.stopPropagation()}
+            >
+
+              {/* Close Button */}
+              <button
+                onClick={() => setShowForm(false)}
+                className="absolute top-4 right-4 p-2 rounded-full hover:bg-[var(--foreground)]/10 transition-colors group z-10"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[var(--foreground)]/50 group-hover:text-[var(--foreground)] transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+
+              <div className="px-6 py-8 sm:px-10 sm:py-8">
+                <h2 className="text-2xl sm:text-3xl font-bold mb-2 text-center text-[var(--foreground)] tracking-tight">
+                  Let's Work <span className="text-[var(--accent)]">Together</span>
+                </h2>
+                <p className="mb-6 font-light text-center text-[var(--foreground)]/70 text-sm sm:text-base max-w-lg mx-auto leading-relaxed">
+                  Have a project in mind? Looking for a partner to help build your product? Drop me a line.
+                </p>
+
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="space-y-1.5">
+                      <label htmlFor="name" className="text-[10px] font-bold text-[var(--accent)] uppercase tracking-widest pl-1">
+                        Your Name
+                      </label>
+                      <input
+                        type="text"
+                        id="name"
+                        className="block w-full px-4 py-2.5 bg-[var(--foreground)]/5 border border-[var(--glass-border)] rounded-xl focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent outline-none transition-all placeholder-[var(--foreground)]/40 text-[var(--foreground)] hover:bg-[var(--foreground)]/10 text-sm"
+                        placeholder="John Doe"
+                        required
+                      />
+                    </div>
+                    <div className="space-y-1.5">
+                      <label htmlFor="email" className="text-[10px] font-bold text-[var(--accent)] uppercase tracking-widest pl-1">
+                        Your Email
+                      </label>
+                      <input
+                        type="email"
+                        id="email"
+                        className="block w-full px-4 py-2.5 bg-[var(--foreground)]/5 border border-[var(--glass-border)] rounded-xl focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent outline-none transition-all placeholder-[var(--foreground)]/40 text-[var(--foreground)] hover:bg-[var(--foreground)]/10 text-sm"
+                        placeholder="john@example.com"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <label htmlFor="subject" className="text-[10px] font-bold text-[var(--accent)] uppercase tracking-widest pl-1">
+                      Subject
+                    </label>
+                    <input
+                      type="text"
+                      id="subject"
+                      className="block w-full px-4 py-2.5 bg-[var(--foreground)]/5 border border-[var(--glass-border)] rounded-xl focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent outline-none transition-all placeholder-[var(--foreground)]/40 text-[var(--foreground)] hover:bg-[var(--foreground)]/10 text-sm"
+                      placeholder="Project Inquiry"
+                      required
+                    />
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <label htmlFor="message" className="text-[10px] font-bold text-[var(--accent)] uppercase tracking-widest pl-1">
+                      Your Message
+                    </label>
+                    <textarea
+                      id="message"
+                      rows={4}
+                      className="block w-full px-4 py-2.5 bg-[var(--foreground)]/5 border border-[var(--glass-border)] rounded-xl focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent outline-none transition-all placeholder-[var(--foreground)]/40 text-[var(--foreground)] resize-none hover:bg-[var(--foreground)]/10 text-sm"
+                      placeholder="Tell me about your project..."
+                    ></textarea>
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className="w-full py-3.5 px-6 mt-2 text-sm font-bold text-white rounded-xl bg-gradient-to-r from-[var(--accent)] via-[#ff4f53] to-[var(--accent)] bg-[length:200%_auto] hover:bg-[position:right_center] shadow-[0_0_20px_rgba(245,10,14,0.4)] hover:shadow-[0_0_30px_rgba(245,10,14,0.6)] hover:-translate-y-1 transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed"
+                  >
+                    {loading ? "Sending..." : "Send Message"}
+                  </button>
+                </form>
+              </div>
+            </div>
           </div>
-          
-          <div>
-            <label htmlFor="subject" className="block mb-2 text-sm font-medium text-gray-400 uppercase tracking-wider">
-              Subject
-            </label>
-            <input
-              type="text"
-              id="subject"
-              className="block w-full p-4 text-white bg-black/50 border border-white/10 rounded-xl focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent outline-none transition-all placeholder-gray-600"
-              placeholder="Project Inquiry"
-              required
-            />
+
+          <style jsx global>{`
+            @keyframes modalEnter {
+              0% {
+                opacity: 0;
+                transform: scale(0.95) translateY(20px);
+              }
+              100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+              }
+            }
+          `}</style>
+        </div>
+      )}
+
+      {/* CUSTOM RED THEME TOASTER */}
+      {showToast && (
+        <div className="fixed bottom-10 right-10 z-[150] animate-[slideIn_0.4s_ease-out_forwards]">
+          <div className="bg-[var(--glass-bg)] backdrop-blur-xl border border-[var(--accent)] text-[var(--foreground)] p-4 rounded-xl shadow-[0_8px_32px_0_rgba(245,10,14,0.3)] flex items-center gap-4 min-w-[300px] border-l-4 border-l-[var(--accent)]">
+            <div className="w-10 h-10 rounded-full bg-[var(--accent)]/20 flex items-center justify-center flex-shrink-0 animate-[pulse_2s_infinite]">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-[var(--accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <div>
+              <h4 className="font-bold text-lg text-[var(--foreground)]">Message Sent!</h4>
+              <p className="text-sm text-[var(--foreground)]/70">I'll get back to you soon.</p>
+            </div>
+            <button onClick={() => setShowToast(false)} className="ml-auto text-[var(--foreground)]/50 hover:text-[var(--foreground)]">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+              </svg>
+            </button>
           </div>
-          
-          <div className="sm:col-span-2">
-            <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-400 uppercase tracking-wider">
-              Your message
-            </label>
-            <textarea
-              id="message"
-              rows={6}
-              className="block w-full p-4 text-white bg-black/50 border border-white/10 rounded-xl focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent outline-none transition-all placeholder-gray-600"
-              placeholder="Tell me about your project..."
-            ></textarea>
-          </div>
-          
-          <button
-            type="submit"
-            className="w-full py-4 px-8 text-base font-bold text-white rounded-xl bg-[var(--accent)] hover:bg-red-600 shadow-lg shadow-red-900/20 hover:shadow-red-900/40 transition-all transform hover:-translate-y-1"
-          >
-            Send Message
-          </button>
-        </form>
-      </div>
-      */}
+          <style jsx>{`
+            @keyframes slideIn {
+               0% { opacity: 0; transform: translateX(100%); }
+               100% { opacity: 1; transform: translateX(0); }
+            }
+          `}</style>
+        </div>
+      )}
 
     </section>
   );
