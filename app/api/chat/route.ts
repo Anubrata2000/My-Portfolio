@@ -9,22 +9,22 @@ import { NextResponse } from "next/server";
 */
 
 export async function POST(req: Request) {
-    try {
-        const { message } = await req.json();
-        const apiKey = process.env.GEMINI_API_KEY;
+  try {
+    const { message } = await req.json();
+    const apiKey = process.env.GEMINI_API_KEY;
 
-        if (!apiKey) {
-            return NextResponse.json(
-                { error: "API Key not found. Please set GEMINI_API_KEY in .env.local" },
-                { status: 500 }
-            );
-        }
+    if (!apiKey) {
+      return NextResponse.json(
+        { error: "API Key not found. Please set GEMINI_API_KEY in .env.local" },
+        { status: 500 }
+      );
+    }
 
-        const genAI = new GoogleGenerativeAI(apiKey);
-        const model = genAI.getGenerativeModel({ model: "gemini-flash-latest" });
+    const genAI = new GoogleGenerativeAI(apiKey);
+    const model = genAI.getGenerativeModel({ model: "gemini-flash-latest" });
 
-        // SYSTEM CONTEXT: This tells the AI who it is and what information it has.
-        const systemPrompt = `
+    // SYSTEM CONTEXT: This tells the AI who it is and what information it has.
+    const systemPrompt = `
       You are Anubrata Chatterjee's AI Portfolio Assistant. 
       Your goal is to answer questions about Anubrata's skills, experience, and projects based strictly on the context below.
       Be friendly, professional, and concise. Maintain the "Neon Red" and "Dark" vibe in your personality (cool, confident, tech-savvy).
@@ -76,14 +76,14 @@ export async function POST(req: Request) {
       User Question: ${message}
     `;
 
-        const result = await model.generateContent(systemPrompt);
-        const response = await result.response;
-        const text = response.text();
+    const result = await model.generateContent(systemPrompt);
+    const response = await result.response;
+    const text = response.text();
 
-        return NextResponse.json({ reply: text });
+    return NextResponse.json({ reply: text });
 
-    } catch (error) {
-        console.error("Chat Error:", error);
-        return NextResponse.json({ error: "Failed to generate response." }, { status: 500 });
-    }
+  } catch (error) {
+    console.error("Chat Error:", error);
+    return NextResponse.json({ error: "Failed to generate response." }, { status: 500 });
+  }
 }

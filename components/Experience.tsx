@@ -15,7 +15,7 @@ export default function Experience() {
             company: "Appycodes",
             location: "Siliguri, West Bengal",
             description: "Building and maintaining robust softwares using Laravel. Contributing to new features, optimizing existing code, and ensuring scalability and security of applications.",
-            skills: ["Laravel", "PHP", "MySQL", "Scalability", "System Design"],
+            skills: ["Laravel", "PHP", "Codeigniter", "MySQL", "PostgreSQL", "GraphQL", "Database Design"],
             color: "border-red-500",
             glow: "shadow-red-500/50"
         },
@@ -35,16 +35,16 @@ export default function Experience() {
     const [activeId, setActiveId] = useState(1);
 
     return (
-        <section id="experience" className="py-24 px-4 relative overflow-hidden bg-black/50 min-h-screen flex flex-col justify-center">
+        <section id="experience" className="py-24 px-4 relative overflow-hidden bg-[var(--background)]/50 min-h-screen flex flex-col justify-center">
             {/* Background Grid */}
-            <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)]"></div>
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)] opacity-20"></div>
 
             <div className="max-w-7xl mx-auto w-full relative z-10">
                 <div className="mb-16 md:mb-24 text-center">
                     <div className="inline-block mb-4 text-[var(--accent)] font-bold tracking-widest uppercase text-sm">
                         02. My Journey
                     </div>
-                    <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter">
+                    <h2 className="text-4xl md:text-6xl font-black text-[var(--foreground)] tracking-tighter">
                         MY <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--accent)] to-rose-600">EVOLUTION</span>
                     </h2>
                 </div>
@@ -57,10 +57,10 @@ export default function Experience() {
                             <button
                                 key={exp.id}
                                 onClick={() => setActiveId(exp.id)}
-                                className={`group relative p-6 rounded-xl border text-left transition-all duration-300 w-full hover:bg-white/5 
+                                className={`group relative p-6 rounded-xl border text-left transition-all duration-300 w-full hover:bg-[var(--foreground)]/5 
                                     ${activeId === exp.id
-                                        ? `bg-white/5 border-[var(--accent)] shadow-[0_0_20px_rgba(245,10,14,0.2)]`
-                                        : "border-white/10 hover:border-white/30"
+                                        ? `bg-[var(--foreground)]/5 border-[var(--accent)] shadow-[0_0_20px_rgba(245,10,14,0.2)]`
+                                        : "border-[var(--glass-border)] hover:border-[var(--foreground)]/30"
                                     }`}
                             >
                                 <div className="flex items-center justify-between mb-2">
@@ -74,7 +74,7 @@ export default function Experience() {
                                         </span>
                                     )}
                                 </div>
-                                <h3 className={`text-xl md:text-2xl font-bold transition-colors ${activeId === exp.id ? "text-white" : "text-gray-400 group-hover:text-white"}`}>
+                                <h3 className={`text-xl md:text-2xl font-bold transition-colors ${activeId === exp.id ? "text-[var(--foreground)]" : "text-gray-400 group-hover:text-[var(--foreground)]"}`}>
                                     {exp.role}
                                 </h3>
                                 <p className="text-sm text-gray-500 mt-1">{exp.company}</p>
@@ -96,7 +96,7 @@ export default function Experience() {
                                 key={exp.id}
                                 className={`absolute inset-0 transition-all duration-500 ease-in-out ${activeId === exp.id ? "opacity-100 translate-x-0 z-10 pointer-events-auto" : "opacity-0 translate-x-8 z-0 pointer-events-none"}`}
                             >
-                                <div className="h-full bg-black/40 backdrop-blur-xl border border-white/10 p-8 md:p-12 rounded-2xl relative overflow-hidden group">
+                                <div className="h-full bg-[var(--glass-bg)] backdrop-blur-xl border border-[var(--glass-border)] p-8 md:p-12 rounded-2xl relative overflow-hidden group">
                                     {/* Decorative Elements */}
                                     <div className="absolute top-0 right-0 p-4 opacity-20">
                                         <svg className="w-24 h-24 text-[var(--accent)]" fill="currentColor" viewBox="0 0 24 24">
@@ -104,10 +104,10 @@ export default function Experience() {
                                         </svg>
                                     </div>
 
-                                    <h3 className="text-3xl font-bold text-white mb-2">{exp.company}</h3>
+                                    <h3 className="text-3xl font-bold text-[var(--foreground)] mb-2">{exp.company}</h3>
                                     <div className="text-[var(--accent)] text-sm font-mono mb-8">{exp.location}</div>
 
-                                    <p className="text-gray-300 text-lg leading-relaxed mb-8 border-l-2 border-[var(--accent)] pl-6">
+                                    <p className="text-[var(--foreground)]/70 text-lg leading-relaxed mb-8 border-l-2 border-[var(--accent)] pl-6">
                                         {exp.description}
                                     </p>
 
@@ -115,7 +115,7 @@ export default function Experience() {
                                         <div className="text-xs font-bold text-gray-500 uppercase tracking-widest">Tech Stack</div>
                                         <div className="flex flex-wrap gap-2">
                                             {exp.skills.map((skill, idx) => (
-                                                <span key={idx} className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs md:text-sm text-gray-300 hover:border-[var(--accent)] hover:text-white transition-colors">
+                                                <span key={idx} className="px-3 py-1 rounded-full bg-[var(--foreground)]/5 border border-[var(--glass-border)] text-xs md:text-sm text-[var(--foreground)]/70 hover:border-[var(--accent)] hover:text-[var(--foreground)] transition-colors">
                                                     #{skill}
                                                 </span>
                                             ))}

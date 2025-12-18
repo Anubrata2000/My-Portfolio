@@ -33,14 +33,14 @@ export default function Education() {
     return (
         <section id="education" className="py-24 px-4 relative overflow-hidden">
             {/* Ambient Background Glow */}
-            <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[400px] h-[400px] bg-[var(--accent)] rounded-full mix-blend-screen filter blur-[120px] opacity-5 pointer-events-none"></div>
+            <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[400px] h-[400px] bg-[var(--accent)] rounded-full mix-blend-[var(--glow-blend)] filter blur-[120px] opacity-20 pointer-events-none"></div>
 
             <div className="max-w-5xl mx-auto relative z-10">
                 <div className="text-center mb-16">
                     <div className="inline-block mb-4 text-[var(--accent)] font-bold tracking-widest uppercase text-sm">
                         03. Learning
                     </div>
-                    <h2 className="text-4xl md:text-5xl font-bold text-white">
+                    <h2 className="text-4xl md:text-5xl font-bold text-[var(--foreground)]">
                         My <span className="text-[var(--accent)]">Education</span>
                     </h2>
                 </div>
@@ -62,7 +62,7 @@ export default function Education() {
                                     We place this absolutely in the center for desktop.
                                 */}
                                 <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 items-center justify-center z-20">
-                                    <div className="w-4 h-4 rounded-full bg-black border-2 border-[var(--accent)] shadow-[0_0_10px_var(--accent)]"></div>
+                                    <div className="w-4 h-4 rounded-full bg-[var(--background)] border-2 border-[var(--accent)] shadow-[0_0_10px_var(--accent)]"></div>
                                     <div className="absolute w-8 h-8 bg-[var(--accent)]/20 rounded-full animate-pulse"></div>
                                 </div>
 
@@ -77,11 +77,12 @@ export default function Education() {
                                     pl-12 md:pl-0 
                                 `}>
                                     <div className={`
-                                        glass-card p-6 md:p-8 rounded-2xl border border-white/5 hover:border-[var(--accent)]/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(245,10,14,0.1)] relative group
+                                        glass-card p-6 md:p-8 rounded-2xl border border-[var(--glass-border)] hover:border-[var(--accent)]/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(245,10,14,0.1)] relative group
+                                        bg-[var(--glass-bg)]
                                         ${index % 2 === 0 ? 'md:mr-0' : 'md:ml-0'}
                                     `}>
                                         {/* Mobile Connector Dot & Line */}
-                                        <div className="md:hidden absolute top-8 -left-[54px] w-4 h-4 rounded-full bg-black border-2 border-[var(--accent)] z-20"></div>
+                                        <div className="md:hidden absolute top-8 -left-[54px] w-4 h-4 rounded-full bg-[var(--background)] border-2 border-[var(--accent)] z-20"></div>
                                         <div className="md:hidden absolute top-[39px] -left-[50px] w-[50px] h-[2px] bg-[var(--accent)]/30"></div>
 
                                         {/* Desktop Connector Line (Horizontal) */}
@@ -93,19 +94,19 @@ export default function Education() {
                                         <div className="flex flex-col gap-2">
                                             <div className={`flex flex-col ${index % 2 === 0 ? 'md:items-end' : 'md:items-start'}`}>
                                                 <div className={`flex items-center gap-4 mb-2 ${index % 2 === 0 ? 'md:flex-row-reverse' : 'md:flex-row'}`}>
-                                                    <h3 className="text-xl font-bold text-white group-hover:text-[var(--accent)] transition-colors">{edu.school}</h3>
-                                                    <span className="text-[var(--accent)] text-xs font-bold px-2 py-1 rounded bg-[var(--accent)]/10 border border-[var(--accent)]/20 shadow-[0_0_10px_rgba(245,10,14,0.2)]">
+                                                    <h3 className="text-xl font-bold text-[var(--foreground)] group-hover:text-[var(--accent)] transition-colors">{edu.school}</h3>
+                                                    <span className="text-[var(--accent)] text-xs font-bold px-2 py-1 rounded bg-[var(--foreground)]/5 border border-[var(--accent)]/20 shadow-[0_0_10px_rgba(245,10,14,0.2)]">
                                                         {edu.year}
                                                     </span>
                                                 </div>
-                                                <h4 className="text-lg font-medium text-gray-300">{edu.degree}</h4>
+                                                <h4 className="text-lg font-medium text-[var(--foreground)]/80">{edu.degree}</h4>
                                             </div>
 
-                                            <p className="text-gray-500 text-sm leading-relaxed mt-2">{edu.description}</p>
+                                            <p className="text-[var(--foreground)]/70 text-sm leading-relaxed mt-2">{edu.description}</p>
 
                                             <div className={`flex flex-wrap gap-2 mt-4 ${index % 2 === 0 ? 'md:justify-end' : 'md:justify-start'}`}>
                                                 {edu.tags.map(tag => (
-                                                    <span key={tag} className="text-[10px] font-mono text-gray-400 px-2 py-0.5 rounded-full border border-white/5 bg-black/20">
+                                                    <span key={tag} className="text-[10px] font-mono text-[var(--foreground)]/70 px-2 py-0.5 rounded-full border border-[var(--glass-border)] bg-[var(--foreground)]/5">
                                                         {tag}
                                                     </span>
                                                 ))}

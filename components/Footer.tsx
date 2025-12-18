@@ -6,7 +6,7 @@ export default function Footer() {
     const currentYear = new Date().getFullYear();
 
     return (
-        <footer className="pt-12 pb-32 glass border-t border-white/5 relative z-10">
+        <footer className="pt-12 pb-32 border-t border-white/10 relative z-10 bg-black backdrop-blur-md">
             <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-6">
 
                 {/* Brand */}
@@ -14,7 +14,7 @@ export default function Footer() {
                     <div className="text-2xl font-bold text-white tracking-tighter mb-2">
                         Anubrata<span className="text-[var(--accent)]">.</span>
                     </div>
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-gray-400">
                         © {currentYear} Anubrata Chatterjee. Built with Next.js.
                     </p>
                 </div>

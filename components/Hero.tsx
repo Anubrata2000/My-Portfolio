@@ -24,9 +24,9 @@ export default function Hero() {
                     </div> */}
 
                     {/* Massive Headline */}
-                    <h1 className="text-5xl md:text-8xl lg:text-9xl font-black tracking-tighter text-white mb-6 leading-[0.9]">
+                    <h1 className="text-5xl md:text-8xl lg:text-9xl font-black tracking-tighter text-[var(--foreground)] mb-6 leading-[0.9]">
                         Software <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-500 to-white">
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-500 to-[var(--foreground)]">
                             Engineer
                         </span>
                         <span className="text-[var(--accent)]">.</span>
@@ -34,14 +34,14 @@ export default function Hero() {
 
                     {/* Description */}
                     <p className="text-xl md:text-2xl text-gray-400 max-w-2xl mb-12 font-light">
-                        Building <span className="text-white font-medium">robust, scalable backend systems</span> with clean, responsive <span className="text-[var(--accent)] font-medium">user interfaces</span>.
+                        Building <span className="text-[var(--foreground)] font-medium">robust, scalable backend systems</span> with clean, responsive <span className="text-[var(--accent)] font-medium">user interfaces</span>.
                     </p>
 
                     {/* Buttons */}
                     <div className="flex flex-col sm:flex-row gap-6">
                         <a
                             href="#projects"
-                            className="group relative inline-flex items-center justify-center px-8 py-4 text-base font-bold text-black transition-all duration-200 bg-white font-pj focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 rounded-full"
+                            className="group relative inline-flex items-center justify-center px-8 py-4 text-base font-bold text-[var(--background)] transition-all duration-200 bg-[var(--foreground)] font-pj focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 rounded-full"
                         >
                             Show My Work
                             <svg className="w-5 h-5 ml-2 transition-transform duration-200 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -50,7 +50,7 @@ export default function Hero() {
                         </a>
                         <a
                             href="#contact"
-                            className="group relative inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white transition-all duration-200 border border-white/20 hover:border-white hover:bg-white/5 font-pj focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 rounded-full"
+                            className="group relative inline-flex items-center justify-center px-8 py-4 text-base font-bold text-[var(--foreground)] transition-all duration-200 border border-[var(--foreground)]/20 hover:border-[var(--foreground)] hover:bg-[var(--foreground)]/5 font-pj focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 rounded-full"
                         >
                             Contact Me
                         </a>
@@ -64,7 +64,7 @@ export default function Hero() {
 
                     {/* Rotating Dashed Circle */}
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] border border-[var(--accent)]/20 rounded-full border-dashed animate-[spin_10s_linear_infinite] pointer-events-none"></div>
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] border border-white/5 rounded-full animate-[spin_15s_linear_infinite_reverse] pointer-events-none"></div>
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] border border-[var(--foreground)]/5 rounded-full animate-[spin_15s_linear_infinite_reverse] pointer-events-none"></div>
 
                     <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-full border-2 border-[var(--accent)]/30 overflow-hidden glass-card shadow-[0_0_40px_rgba(245,10,14,0.2)] group transition-transform duration-500 hover:scale-105 hover:-rotate-2 z-10" style={{ isolation: 'isolate', borderRadius: '9999px', maskImage: 'radial-gradient(white, black)' }}>
                         {/* 
