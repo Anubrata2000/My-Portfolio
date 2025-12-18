@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import CustomCursor from "@/components/CustomCursor";
 import ChatWidget from "@/components/ChatWidget";
@@ -23,6 +24,7 @@ export default function RootLayout({
         <CustomCursor />
         <ChatWidget />
         {children}
+        <SpeedInsights />
       </body>
     </html>
   );
