@@ -147,3 +147,9 @@ html {
 .perspective-1000 {
   perspective: 1000px;
 }
+
+/* Skip rendering portfolio sections until they approach the viewport. */
+.deferred-section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 800px;
+}

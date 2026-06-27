@@ -26,7 +26,7 @@ export default function RevealOnScroll({ children }: { children: React.ReactNode
     return (
         <div
             ref={ref}
-            className={`transition-all duration-1000 transform ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20"
+            className={`deferred-section transition-all duration-1000 transform ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20"
                 }`}
         >
             {children}

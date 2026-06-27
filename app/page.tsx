@@ -6,7 +6,6 @@ import Experience from "@/components/Experience";
 import Education from "@/components/Education";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import ChatWidget from "@/components/ChatWidget";
 
 import RevealOnScroll from "@/components/RevealOnScroll";
 
@@ -32,7 +31,6 @@ export default function Home() {
       </div>
 
       <Footer />
-      <ChatWidget />
     </main>
   );
 }

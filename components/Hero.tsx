@@ -1,3 +1,6 @@
+import Image from "next/image";
+import profileImage from "@/public/profile.jpg";
+
 /*
   Hero Component (Trushank Style)
   - Big, Bold Typography.
@@ -72,10 +75,14 @@ export default function Hero() {
                           Replace the 'src' below with your actual image path (e.g., "/profile.jpg")
                           Ensure your image is in the 'public' folder.
                         */}
-                        <img
-                            src="/profile.jpg"
-                            alt="Profile Avatar"
-                            className="w-full h-full object-cover transition-all duration-500 scale-100 group-hover:scale-110 brightness-80 contrast-150 saturate-110"
+                        <Image
+                            src={profileImage}
+                            alt="Anubrata Chatterjee"
+                            fill
+                            priority
+                            fetchPriority="high"
+                            sizes="(min-width: 768px) 384px, 288px"
+                            className="object-cover transition-all duration-500 scale-100 group-hover:scale-110 brightness-80 contrast-150 saturate-110"
                         />
                     </div>
                 </div>
